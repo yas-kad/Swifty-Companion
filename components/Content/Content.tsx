@@ -83,7 +83,7 @@ function Content({ projects, achievements, skills }: { projects: [], achievement
                                 >{item.name}</Text>
 
                                 <Text style={styles.status}>
-                                    {item.level?.toFixed(2)}%l
+                                    {item.level?.toFixed(2)}%
                                 </Text>
 
                             </View>

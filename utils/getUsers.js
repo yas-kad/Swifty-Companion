@@ -1,9 +1,10 @@
 import { getToken } from "./auth";
+import { API_URL } from "@env";
 
-export const getUsers = async (value: any) => {
+export const getUsers = async (value) => {
     try {
         const accessToken = await getToken();
-        const users = await fetch(`${process.env.url}/v2/users?search[login]=${value}`, {
+        const users = await fetch(`${API_URL}/v2/users?search[login]=${value}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -20,11 +21,11 @@ export const getUsers = async (value: any) => {
     }
 };
 
-export const getUserDetails = async (userId: number) => {
+export const getUserDetails = async (userId) => {
     try {
         const accessToken = await getToken();
 
-        const userDetails = await fetch(`${process.env.url}/v2/users/${userId}`, {
+        const userDetails = await fetch(`${API_URL}/v2/users/${userId}`, {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${accessToken}`,

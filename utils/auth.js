@@ -1,29 +1,27 @@
 import { authorize } from 'react-native-app-auth';
-import Config from "react-native-config";
+import { CLIENTID, CLIENT_SECRET, API_URL } from "@env";
 
 
 export async function getToken() {
-    console.log("Getting token")
-    console.log("env env", Config.CLIENTID)
     const data = {
         grant_type: 'client_credentials',
-        client_id: process.env.clientId??"",
-        client_secret: process.env.clientSecret??"",
+        client_id: CLIENTID ?? "",
+        client_secret: CLIENT_SECRET ?? "",
     };
-
-    return await fetch(`${process.env.url}/oauth/token`, {
+    return await fetch(`${API_URL}/oauth/token`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams(data).toString(),
-    }).then(async (response)=>{
-        if (!response.ok){
+    }).then(async (response) => {
+        if (!response.ok) {
             return null
         }
         const responseData = await response.json();
         return responseData.access_token
-    }).catch((err)=>{
+    }).catch((err) => {
+        console.error("Failed to get token:", err)
         return null
     })
 

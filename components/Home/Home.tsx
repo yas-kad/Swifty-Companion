@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, Text, View, TextInput, ImageBackground, I
 import { useState } from 'react';
 import { useNavigation } from "@react-navigation/native";
 import { getUsers } from "../../utils/getUsers";
-import { debounce, set } from "lodash";
+import { debounce } from "lodash";
 import { SvgUri } from "react-native-svg";
 
 
